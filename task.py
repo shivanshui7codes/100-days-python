@@ -1,64 +1,66 @@
-print(r'''
-*******************************************************************************
-          |                   |                  |                     |
- _________|________________.=""_;=.______________|_____________________|_______
-|                   |  ,-"_,=""     `"=.|                  |
-|___________________|__"=._o`"-._        `"=.______________|___________________
-          |                `"=._o`"=._      _`"=._                     |
- _________|_____________________:=._o "=._."_.-="'"=.__________________|_______
-|                   |    __.--" , ; `"=._o." ,-"""-._ ".   |
-|___________________|_._"  ,. .` ` `` ,  `"-._"-._   ". '__|___________________
-          |           |o`"=._` , "` `; .". ,  "-._"-._; ;              |
- _________|___________| ;`-.o`"=._; ." ` '`."\ ` . "-._ /_______________|_______
-|                   | |o ;    `"-.o`"=._``  '` " ,__.--o;   |
-|___________________|_| ;     (#) `-.o `"=.`_.--"_o.-; ;___|___________________
-____/______/______/___|o;._    "      `".o|o_.--"    ;o;____/______/______/____
-/______/______/______/_"=._o--._        ; | ;        ; ;/______/______/______/_
-____/______/______/______/__"=._o--._   ;o|o;     _._;o;____/______/______/____
-/______/______/______/______/____"=._o._; | ;_.--"o.--"_/______/______/______/_
-____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
-/______/______/______/______/______/______/______/______/______/______/_____ /
-*******************************************************************************
-''')
-print("Welcome to Treasure Island.")
-print("Your mission is to find the treasure.")
-level1 = input("You're at a cross road. Where do you want to go?\n    Type 'left' or 'right'\n").lower()
+import random
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
 
-if level1 == "left":
-    print("You've come to a lake. There is an island in the middle of the lake.")
-    level2 = input("    Type 'wait' to wait for a boat. Type 'swim' to swim across.\n").lower()
-    if level2 == "wait":
-        print("You arrive at the island unharmed. There is a house with 3 doors.")
-        level3 = input("    One red, one yellow, one blue and one green. Which colour do you choose?\n").lower()
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
 
-        if level3 == "red":
-            print("It's a room full of fire. Game Over.")
-        elif level3 == "yellow":
-            print("You found the treasure! You Win!")
-        elif level3 == "blue":
-            print("You enter a room of beasts. Game Over.")
-        elif level3 == "green":
-            print("You are teleported to a virtual battleground game")
-            level4 = input("    You have to win the game to come back outside\n Choose your playstyle. 'Safe play' or 'Aggressive play'?\n").lower()
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
 
-            if level4 == "safe play":
-                print("You got killed by a professional player. GAME OVER!")
-            elif level4 == "aggressive play":
-                print("Congrats! You won the game with the treasure")
-            else:
-                print("WRONG INPUT")
 
-        else:
-            print("WRONG INPUT")
+options = [ rock, paper, scissors]
+choice = (input("What do you choose? Type 'rock', 'paper' or 'scissors'.\n")).lower()
+computer_choice = random.choice(options)
 
-    elif level2 == "swim":
-        print("You get attacked by an angry trout. Game Over.")
-
+if choice == "rock":
+    print(rock)
+    print("Computer Chose:")
+    print(computer_choice)
+    if computer_choice == paper:
+        print("YOU LOSE!")
+    elif computer_choice == rock:
+        print("It's a draw.")
     else:
-        print("WRONG INPUT")
-
-elif level1 == "right":
-    print("You fell into a hole. GAME OVER!")
+        print("YOU WIN!")
+elif choice == "paper":
+    print(paper)
+    print("Computer Chose:")
+    print(computer_choice)
+    if computer_choice == paper:
+        print("It's a draw.")
+    elif computer_choice == rock:
+        print("YOU WIN!")
+    else:
+        print("YOU LOSE!")
+elif choice == "scissors":
+    print(scissors)
+    print("Computer Chose:")
+    print(computer_choice)
+    if computer_choice == paper:
+        print("YOU WIN!")
+    elif computer_choice == rock:
+        print("YOU LOSE!")
+    else:
+        print("It's a draw.")
 
 else:
-    print("WRONG INPUT")
+    print("Invalid Input")
